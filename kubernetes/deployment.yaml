@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myip
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myip
+  template:
+    metadata:
+      labels:
+        app: myip
+    spec:
+      containers:
+        - name: myip
+          image: dockr.it/gomyip:x86_64 
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: dockrit
